@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="Home"
+        app:fontFamily="@font/raleway" />
+    <item android:id="@+id/favorites"
+        android:icon="@drawable/favorites"
+        android:title="Favorites"
+        app:fontFamily="@font/raleway" />
+    <item android:id="@+id/dictionary"
+        android:icon="@drawable/dictionary"
+        android:title="Dictionary"
+        app:fontFamily="@font/raleway" />
+    <item android:id="@+id/categories"
+        android:icon="@drawable/categories"
+        android:title="Categories"
+        app:fontFamily="@font/raleway" />
+    <item android:id="@+id/minigames"
+        android:icon="@drawable/minigames"
+        android:title="Mini Games"
+        app:fontFamily="@font/raleway" />
+    <item android:id="@+id/about"
+        android:icon="@drawable/about"
+        android:title="About"
+        app:fontFamily="@font/raleway" />
+</menu>

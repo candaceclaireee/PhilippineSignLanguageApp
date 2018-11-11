@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 public class SplashActivity extends AppCompatActivity {
 
+    /*For the Splash Screen */
     private static int SPLASH_TIME_OUT = 3000;
 
     @Override
@@ -17,6 +18,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        /*For the Splash Screen */
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run(){
