@@ -1,7 +1,11 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Base application theme.  -->
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+    </style>
+
+    <!-- Splash screen theme.  -->
+    <style name="Splash" parent="Theme.AppCompat.NoActionBar">
     </style>
 
 </resources>

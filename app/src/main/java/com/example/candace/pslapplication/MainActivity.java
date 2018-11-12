@@ -48,9 +48,11 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Favorites",Toast.LENGTH_SHORT).show();
                     case R.id.dictionary:
                         Toast.makeText(MainActivity.this, "Dictionary",Toast.LENGTH_SHORT).show();
+                    case R.id.tutorials:
+                        Toast.makeText(MainActivity.this, "Tutorials",Toast.LENGTH_SHORT).show();
                     case R.id.categories:
                         Toast.makeText(MainActivity.this, "Categories",Toast.LENGTH_SHORT).show();
-                    case R.id.minigames:
+                    case R.id.quizzes:
                         Toast.makeText(MainActivity.this, "Mini Games",Toast.LENGTH_SHORT).show();
                     case R.id.about:
                         Toast.makeText(MainActivity.this, "About",Toast.LENGTH_SHORT).show();
