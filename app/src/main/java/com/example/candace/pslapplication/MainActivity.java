@@ -9,6 +9,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,10 +23,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
         /* For The Navigation Menu */
-        drawerLayout = findViewById(R.id.activity_main);
+        drawerLayout = (DrawerLayout)findViewById(R.id.activity_main);
         actionBarDrawer = new ActionBarDrawerToggle(this, drawerLayout,R.string.open, R.string.close);
 
         drawerLayout.addDrawerListener(actionBarDrawer);
@@ -33,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
         ActionBar myActionBar = getSupportActionBar();
         if (myActionBar != null) {
             myActionBar.setDisplayHomeAsUpEnabled(true);
-            myActionBar.setTitle(null);
+            myActionBar.setTitle("Home");
         }
 
-        navView = findViewById(R.id.nv);
+        navView = (NavigationView) findViewById(R.id.nv);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
