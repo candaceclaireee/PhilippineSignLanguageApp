@@ -1,6 +1,7 @@
 package com.example.candace.pslapplication;
 
 /* Dependencies */
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -46,22 +47,26 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch(id) {
                     case R.id.home:
-                        Toast.makeText(MainActivity.this, "Home",Toast.LENGTH_SHORT).show();
+                        return true;
                     case R.id.favorites:
-                        Toast.makeText(MainActivity.this, "Favorites",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Favorites",Toast.LENGTH_SHORT).show();  break;
                     case R.id.dictionary:
-                        Toast.makeText(MainActivity.this, "Dictionary",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Dictionary",Toast.LENGTH_SHORT).show();  break;
                     case R.id.tutorials:
-                        Toast.makeText(MainActivity.this, "Tutorials",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Tutorials",Toast.LENGTH_SHORT).show();  break;
                     case R.id.categories:
-                        Toast.makeText(MainActivity.this, "Categories",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Categories",Toast.LENGTH_SHORT).show();  break;
                     case R.id.quizzes:
-                        Toast.makeText(MainActivity.this, "Mini Games",Toast.LENGTH_SHORT).show();
-                    case R.id.about:
-                        Toast.makeText(MainActivity.this, "About",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Mini Games",Toast.LENGTH_SHORT).show(); break;
+                    case R.id.about: {
+                        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
+                        MainActivity.this.startActivity(intent);
+                        return true;
+                    }
                     default:
                         return true;
                 }
+                return false;
             }
         });
     }
