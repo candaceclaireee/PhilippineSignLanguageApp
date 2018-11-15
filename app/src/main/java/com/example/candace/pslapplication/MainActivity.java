@@ -17,7 +17,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     /* For the Navigation Menu */
-    private DrawerLayout drawerLayout;
+    protected DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawer;
     private NavigationView navView;
 
@@ -27,7 +27,10 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-        /* For The Navigation Menu */
+        initializeNavigationMenu();
+    }
+
+    public void initializeNavigationMenu(){
         drawerLayout = (DrawerLayout)findViewById(R.id.activity_main);
         actionBarDrawer = new ActionBarDrawerToggle(this, drawerLayout,R.string.open, R.string.close);
 
@@ -57,8 +60,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.categories:
                         Toast.makeText(MainActivity.this, "Categories",Toast.LENGTH_SHORT).show();  break;
                     case R.id.quizzes:
-                        Toast.makeText(MainActivity.this, "Mini Games",Toast.LENGTH_SHORT).show(); break;
+                        Toast.makeText(MainActivity.this, "Quizzes",Toast.LENGTH_SHORT).show(); break;
                     case R.id.about: {
+                        drawerLayout.closeDrawers();
                         Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
                         MainActivity.this.startActivity(intent);
                         return true;
