@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "645973137427",
+    "firebase_url": "https://philippinesignlanguageapp.firebaseio.com",
+    "project_id": "philippinesignlanguageapp",
+    "storage_bucket": "philippinesignlanguageapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645973137427:android:a8046d22749083f9",
+        "android_client_info": {
+          "package_name": "com.example.candace.pslapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "645973137427-mqcfpdodua5r7qv54bgpfba22h9nc7uc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.candace.pslapplication",
+            "certificate_hash": "4ac203c164230c8bcdb02c551b2ba168b983d8a5"
+          }
+        },
+        {
+          "client_id": "645973137427-cs54a0odsstqn57v9lm2regpebinmcou.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2l6y3ei_8VdStzKcOW3BL65vN1QZNI0M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "645973137427-cs54a0odsstqn57v9lm2regpebinmcou.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
