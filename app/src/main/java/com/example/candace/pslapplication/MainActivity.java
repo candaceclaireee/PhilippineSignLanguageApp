@@ -13,6 +13,9 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawer;
     private NavigationView navView;
 
+    /* For the Firebase Database */
+    private DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +34,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initializeNavigationMenu();
+
+        /* For the Firebase Database */
+//      mDatabase = FirebaseDatabase.getInstance().getReference();
+//      HashMap<String, String> dataMap = new HashMap<String, String>();
+//      dataMap.put("Name", "MOBEBE");
+//      dataMap.put("Email", "mobebe@dlsu.edu.ph");
+//      mDatabase.push().setValue(dataMap);
+//      mDatabase.child("Name").setValue("Candace");
     }
 
     public void initializeNavigationMenu(){
-        drawerLayout = (DrawerLayout)findViewById(R.id.activity_main);
+        drawerLayout = findViewById(R.id.activity_main);
         actionBarDrawer = new ActionBarDrawerToggle(this, drawerLayout,R.string.open, R.string.close);
 
         drawerLayout.addDrawerListener(actionBarDrawer);
@@ -43,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             myActionBar.setTitle("Home");
         }
 
-        navView = (NavigationView) findViewById(R.id.nv);
+        navView = findViewById(R.id.nv);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
