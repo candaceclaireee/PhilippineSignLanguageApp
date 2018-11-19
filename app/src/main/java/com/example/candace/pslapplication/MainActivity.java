@@ -10,7 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.Window;
+import android.os.Handler;
 import android.view.WindowManager;
 import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch(id) {
                     case R.id.home:
+                        drawerLayout.closeDrawers();
                         return true;
                     case R.id.favorites:
                         Toast.makeText(MainActivity.this, "Favorites",Toast.LENGTH_SHORT).show();  break;
@@ -76,9 +77,15 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.quizzes:
                         Toast.makeText(MainActivity.this, "Quizzes",Toast.LENGTH_SHORT).show(); break;
                     case R.id.about: {
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
+                                MainActivity.this.startActivity(intent);
+                                finish();
+                            }
+                        }, 100);
                         drawerLayout.closeDrawers();
-                        Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
-                        MainActivity.this.startActivity(intent);
                         return true;
                     }
                     default:

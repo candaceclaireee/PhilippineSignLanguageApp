@@ -2,6 +2,7 @@ package com.example.candace.pslapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -55,9 +56,15 @@ public class AboutActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch(id) {
                     case R.id.home:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                AboutActivity.this.startActivity(intent);
+                                finish();
+                            }
+                        }, 100);
                         drawerLayout.closeDrawers();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        AboutActivity.this.startActivity(intent);
                         return true;
                     case R.id.favorites:
                         Toast.makeText(AboutActivity.this, "Favorites",Toast.LENGTH_SHORT).show();  break;
@@ -70,6 +77,7 @@ public class AboutActivity extends AppCompatActivity {
                     case R.id.quizzes:
                         Toast.makeText(AboutActivity.this, "Mini Games",Toast.LENGTH_SHORT).show(); break;
                     case R.id.about:
+                        drawerLayout.closeDrawers();
                         return true;
                     default:
                         return true;
