@@ -20,6 +20,11 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".AboutActivity" />
+        <activity android:name=".FavoritesActivity" />
+        <activity android:name=".DictionaryActivity" />
+        <activity android:name=".CategoriesActivity" />
+        <activity android:name=".QuizzesActivity" />
+        <activity android:name=".TutorialsActivity"></activity>
     </application>
 
 </manifest>

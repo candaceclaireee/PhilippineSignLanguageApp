@@ -1,6 +1,5 @@
 package com.example.candace.pslapplication;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -10,14 +9,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -37,7 +30,7 @@ public class AboutActivity extends AppCompatActivity {
 
     /* For Navigation Menu */
     public void initializeNavigationMenu(){
-        drawerLayout = (DrawerLayout)findViewById(R.id.activity_main);
+        drawerLayout = (DrawerLayout)findViewById(R.id.activity_about);
         actionBarDrawer = new ActionBarDrawerToggle(this, drawerLayout,R.string.open, R.string.close);
 
         drawerLayout.addDrawerListener(actionBarDrawer);
@@ -49,7 +42,7 @@ public class AboutActivity extends AppCompatActivity {
             myActionBar.setTitle("About");
         }
 
-        navView = (NavigationView) findViewById(R.id.nv);
+        navView = (NavigationView) findViewById(R.id.navigation_view);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -67,22 +60,66 @@ public class AboutActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         return true;
                     case R.id.favorites:
-                        Toast.makeText(AboutActivity.this, "Favorites",Toast.LENGTH_SHORT).show();  break;
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getApplicationContext(), FavoritesActivity.class);
+                                AboutActivity.this.startActivity(intent);
+                                finish();
+                            }
+                        }, 120);
+                        drawerLayout.closeDrawers();
+                        return true;
                     case R.id.dictionary:
-                        Toast.makeText(AboutActivity.this, "Dictionary",Toast.LENGTH_SHORT).show();  break;
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getApplicationContext(), DictionaryActivity.class);
+                                AboutActivity.this.startActivity(intent);
+                                finish();
+                            }
+                        }, 120);
+                        drawerLayout.closeDrawers();
+                        return true;
                     case R.id.tutorials:
-                        Toast.makeText(AboutActivity.this, "Tutorials",Toast.LENGTH_SHORT).show();  break;
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getApplicationContext(), TutorialsActivity.class);
+                                AboutActivity.this.startActivity(intent);
+                                finish();
+                            }
+                        }, 120);
+                        drawerLayout.closeDrawers();
+                        return true;
                     case R.id.categories:
-                        Toast.makeText(AboutActivity.this, "Categories",Toast.LENGTH_SHORT).show();  break;
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getApplicationContext(), CategoriesActivity.class);
+                                AboutActivity.this.startActivity(intent);
+                                finish();
+                            }
+                        }, 120);
+                        drawerLayout.closeDrawers();
+                        return true;
                     case R.id.quizzes:
-                        Toast.makeText(AboutActivity.this, "Mini Games",Toast.LENGTH_SHORT).show(); break;
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getApplicationContext(), QuizzesActivity.class);
+                                AboutActivity.this.startActivity(intent);
+                                finish();
+                            }
+                        }, 120);
+                        drawerLayout.closeDrawers();
+                        return true;
                     case R.id.about:
                         drawerLayout.closeDrawers();
                         return true;
                     default:
                         return true;
                 }
-                return false;
             }
         });
     }
