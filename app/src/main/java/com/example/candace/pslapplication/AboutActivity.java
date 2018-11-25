@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -19,11 +21,25 @@ public class AboutActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawer;
     private NavigationView navView;
 
+    private TextView teaminfo;
+    private TextView text;
+    private ImageView img;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_about);
+
+        teaminfo = findViewById(R.id.team);
+        text = findViewById(R.id.textView);
+        img = findViewById(R.id.imageView);
+
+        //img.setImageResource(R.drawable.about);
+        String about = getResources().getString(R.string.about);
+        text.setText(about);
+        String info = getResources().getString(R.string.team);
+        teaminfo.setText(info);
 
         initializeNavigationMenu();
     }

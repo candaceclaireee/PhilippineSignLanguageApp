@@ -3,4 +3,7 @@
 
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="about">As technology continues to rise and mobile applications can be easily accessed, learning has become easier than ever. The Philippine Sign Language (PSL) is a robust visual language which effectively utilizes movement of hands and body as well as facial expressions. PSL is an app that aims to build a bridge to the deaf community through sign language education. With over 120 thousand Filipinos having disabling hearing loss, PSL is an easy and intuitive application which allows the user to learn basic and conversational PSL on the go. Each lesson is broken down by levels of difficulty so that the users can learn at their own pace.</string>
+    <string name="team">This app was developed by 3 students, Candace Claire Mercado, Isabella Patricia Vicencio and Jaymee Ericca Villacruz, from De La Salle University, College of Computer Studies, in partial completion of their Mobile App Development (MOBAPDE) course.</string>
+
 </resources>
