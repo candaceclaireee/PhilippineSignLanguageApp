@@ -14,10 +14,6 @@
         android:icon="@drawable/dictionary"
         android:title="Dictionary"
         app:fontFamily="@font/raleway" />
-    <item android:id="@+id/tutorials"
-        android:icon="@drawable/tutorials"
-        android:title="Tutorials"
-        app:fontFamily="@font/raleway" />
     <item android:id="@+id/categories"
         android:icon="@drawable/categories"
         android:title="Categories"

@@ -88,16 +88,6 @@ public class MainActivity extends AppCompatActivity {
                         }, 100);
                         drawerLayout.closeDrawers();
                         return true;
-                    case R.id.tutorials:
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent intent = new Intent(getApplicationContext(), TutorialsActivity.class);
-                                MainActivity.this.startActivity(intent);
-                                finish();
-                            }
-                        }, 120);
-                        drawerLayout.closeDrawers();
                     case R.id.categories:
                         new Handler().postDelayed(new Runnable() {
                             @Override

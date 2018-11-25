@@ -82,17 +82,6 @@ public class CategoriesActivity extends AppCompatActivity {
                         }, 120);
                         drawerLayout.closeDrawers();
                         return true;
-                    case R.id.tutorials:
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent intent = new Intent(getApplicationContext(), TutorialsActivity.class);
-                                CategoriesActivity.this.startActivity(intent);
-                                finish();
-                            }
-                        }, 100);
-                        drawerLayout.closeDrawers();
-                        return true;
                     case R.id.categories:
                         drawerLayout.closeDrawers();
                         return true;

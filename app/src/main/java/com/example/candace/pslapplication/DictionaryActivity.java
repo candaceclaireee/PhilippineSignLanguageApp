@@ -76,17 +76,6 @@ public class DictionaryActivity extends AppCompatActivity {
                     case R.id.dictionary:
                         drawerLayout.closeDrawers();
                         return true;
-                    case R.id.tutorials:
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent intent = new Intent(getApplicationContext(), TutorialsActivity.class);
-                                DictionaryActivity.this.startActivity(intent);
-                                finish();
-                            }
-                        }, 120);
-                        drawerLayout.closeDrawers();
-                        return true;
                     case R.id.categories:
                         new Handler().postDelayed(new Runnable() {
                             @Override
