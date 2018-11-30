@@ -2,4 +2,8 @@
 <resources>
     <color name="White">#fbfcfc</color>
     <color name="DarkGray">#1a1c1e</color>
+
+    <color name="Red">#F2D7D5  </color>
+    <color name="Yellow">#F9E79F </color>
+    <color name="Blue">#AED6F1</color>
 </resources>

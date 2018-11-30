@@ -24,9 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawer;
     private NavigationView navView;
 
-    /* For the Firebase Database */
-    private DatabaseReference mDatabase;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,14 +31,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initializeNavigationMenu();
-
-        /* For the Firebase Database */
-//      mDatabase = FirebaseDatabase.getInstance().getReference();
-//      HashMap<String, String> dataMap = new HashMap<String, String>();
-//      dataMap.put("Name", "MOBEBE");
-//      dataMap.put("Email", "mobebe@dlsu.edu.ph");
-//      mDatabase.push().setValue(dataMap);
-//      mDatabase.child("Name").setValue("Candace");
     }
 
     public void initializeNavigationMenu(){

@@ -14,13 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="200dp"
-            android:text="CATEGORIES PAGE"
-            android:textSize="20dp" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/categories_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView

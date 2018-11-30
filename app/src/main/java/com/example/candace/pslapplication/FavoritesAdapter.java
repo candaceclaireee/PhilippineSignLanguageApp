@@ -15,8 +15,8 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesHolder> {
         favoritesList = new ArrayList<WordModel>();
 
         /* Test only */
-        favoritesList.add(new WordModel("Test Human", "Tao"));
-        favoritesList.add(new WordModel("Test Banana", "Saging"));
+        favoritesList.add(new WordModel("Test Human", "Tao", "Category Test", false));
+        favoritesList.add(new WordModel("Test Banana", "Saging", "Category Test", false));
     }
 
     @Override
