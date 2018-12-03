@@ -14,19 +14,20 @@
         <Button
             android:id="@+id/categories_button"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="295dp"
             android:background="@android:color/transparent"
             android:gravity="bottom|center"
             android:text="Get Started"
             android:textColor="@color/White"
             android:textSize="18sp"
-            android:textStyle="bold"
+            android:textStyle="bold|italic"
             android:typeface="sans" />
 
         <ImageView
             android:id="@+id/categories_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/categoriespicture" />
 
         <TextView

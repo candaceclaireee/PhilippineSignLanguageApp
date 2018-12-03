@@ -51,7 +51,6 @@ public class CategoriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categories);
 
         initializeNavigationMenu();
-        initializeFirebaseData();
 
         /* For the Recycler View */
         recyclerArea = findViewById(R.id.categories_recycler);

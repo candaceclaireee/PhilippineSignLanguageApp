@@ -6,13 +6,14 @@ public class WordModel {
     private String wordFilipino;
     private String category;
     private boolean favorite;
+    private String link;
 
-
-    public WordModel(String w, String wF, String c, boolean f){
+    public WordModel(String w, String wF, String c, boolean f, String l){
         word = w;
         wordFilipino = wF;
         category = c;
         favorite = f;
+        link = l;
     }
 
     public WordModel(){ }  // this is a parameter-less constructor called upon firebase initialization
@@ -49,4 +50,11 @@ public class WordModel {
         this.favorite = favorite;
     }
 
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 }

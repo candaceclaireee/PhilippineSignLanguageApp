@@ -14,9 +14,9 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesHolder> {
     public FavoritesAdapter(FavoritesActivity activity){
         favoritesList = new ArrayList<WordModel>();
 
-        /* Test only */
-        favoritesList.add(new WordModel("Test Human", "Tao", "Category Test", false));
-        favoritesList.add(new WordModel("Test Banana", "Saging", "Category Test", false));
+        /* Test only but array from firebase will be used not this*/
+        favoritesList.add(new WordModel("Test Human", "Tao", "Category Test", false, "put link here"));
+        favoritesList.add(new WordModel("Test Banana", "Saging", "Category Test", false, "put link here"));
     }
 
     @Override

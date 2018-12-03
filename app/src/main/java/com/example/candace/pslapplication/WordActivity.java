@@ -11,19 +11,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 public class WordActivity extends AppCompatActivity {
+
+    private TextView word_text;
+    private TextView wordFilipino_text;
 
     /* For the Navigation Menu */
     protected DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawer;
     private NavigationView navView;
 
+    /* For the GIF Viewer */
+    private ImageView word_image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_word);
+
+        word_text = findViewById(R.id.word_text);
+        wordFilipino_text = findViewById(R.id.wordFilipino_text);
+
+        /* For the GIF Viewer */
+        word_image = findViewById(R.id.word_image);
+        //Glide.with(this.getApplicationContext()).load("PUT IMAGE / GIF LINK HERE").into(word_image);
 
         initializeNavigationMenu();
     }

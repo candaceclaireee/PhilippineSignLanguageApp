@@ -14,6 +14,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 public class AboutActivity extends AppCompatActivity {
 
     /* For the Navigation Menu */

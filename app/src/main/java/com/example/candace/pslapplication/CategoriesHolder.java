@@ -32,7 +32,6 @@ public class CategoriesHolder extends RecyclerView.ViewHolder{
             categories_text.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.Blue));
             categories_button.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.Blue));
         }
-
         categories_text.setText(word);
     }
 }
