@@ -1,6 +1,8 @@
 package com.example.candace.pslapplication;
 
-public class WordModel {
+import java.io.Serializable;
+
+public class WordModel implements Serializable {
 
     private String word;
     private String wordFilipino;

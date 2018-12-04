@@ -1,8 +1,8 @@
 package com.example.candace.pslapplication;
 
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,9 +16,10 @@ public class CategoriesHolder extends RecyclerView.ViewHolder{
 
     private CategoriesActivity activity;
 
+    private String name;
     private ArrayList<WordModel> list;
 
-    public CategoriesHolder(View view, CategoriesActivity activity) {
+    public CategoriesHolder(View view, final CategoriesActivity activity) {
         super(view);
 
         this.activity = activity;
@@ -29,11 +30,18 @@ public class CategoriesHolder extends RecyclerView.ViewHolder{
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(activity.getApplicationContext(), ListActivity.class);
+
+                intent.putExtra("CATEGORY_NAME",name);
+                intent.putExtra("CATEGORY_WORDS",list);
+
+                activity.startActivity(intent);
             }
         });
     }
 
     public void setCategoryText(String word){
+        name = word;
         if (word.equals("Alphabets")) {
             categories_text.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.Yellow));
             categories_button.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.Yellow));

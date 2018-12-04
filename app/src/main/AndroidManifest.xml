@@ -24,7 +24,8 @@
         <activity android:name=".DictionaryActivity" />
         <activity android:name=".CategoriesActivity" />
         <activity android:name=".QuizzesActivity" />
-        <activity android:name=".WordActivity"></activity>
+        <activity android:name=".WordActivity" />
+        <activity android:name=".ListActivity"></activity>
     </application>
 
 </manifest>

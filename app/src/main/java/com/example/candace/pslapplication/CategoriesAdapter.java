@@ -71,7 +71,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesHolder> {
                 while (dataSnapshots.hasNext()) {
                     DataSnapshot dataSnapshotChild = dataSnapshots.next();
                     WordModel word = dataSnapshotChild.getValue(WordModel.class);
-                    Log.d("TAG_TEST", "In listener's onDataChange");
                     words.add(word);
                 }
                 storageContainer(words);
@@ -94,7 +93,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesHolder> {
                 basicgreetingsList.add(words.get(i));
             }
         }
-
         categoriesList.add(new CategoriesModel("Alphabets", alphabetList));
         categoriesList.add(new CategoriesModel("Weekdays", weekdayList));
         categoriesList.add(new CategoriesModel("Basic Greetings", basicgreetingsList));
