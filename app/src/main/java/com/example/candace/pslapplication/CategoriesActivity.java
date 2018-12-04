@@ -35,10 +35,6 @@ public class CategoriesActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawer;
     private NavigationView navView;
 
-    /* For the Firebase Database */
-    private DatabaseReference mDatabase;
-    private List<WordModel> words;
-
     /* For the Recycler View */
     private RecyclerView recyclerArea;
     private RecyclerView.LayoutManager manager;
@@ -151,26 +147,5 @@ public class CategoriesActivity extends AppCompatActivity {
         if(actionBarDrawer.onOptionsItemSelected(item))
             return true;
         return super.onOptionsItemSelected(item);
-    }
-
-    /* For the Firebase Database */
-    public void initializeFirebaseData(){
-
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("words");
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Iterator<DataSnapshot> dataSnapshots = dataSnapshot.getChildren().iterator();
-                words = new ArrayList<>();
-                while (dataSnapshots.hasNext()) {
-                    DataSnapshot dataSnapshotChild = dataSnapshots.next();
-                    WordModel word = dataSnapshotChild.getValue(WordModel.class);
-                    words.add(word);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) { }
-        });
     }
 }
