@@ -81,6 +81,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesHolder> {
         });
     }
 
+    /* For the Firebase Database */
     public void storageContainer(ArrayList<WordModel> words){
         this.words = words;
 

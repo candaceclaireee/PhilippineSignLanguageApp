@@ -14,13 +14,373 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="200dp"
-            android:text="HOME AND WHERE FSL OF THE DAY IS SHOWN"
-            android:textSize="20dp" />
+            android:layout_below="@+id/imageView2"
+            android:layout_marginTop="-15dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/homefslday_button"
+                    android:layout_width="45dp"
+                    android:layout_height="52dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rightarrow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/listcategories_text"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/homefsl_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="52dp"
+                    android:layout_alignStart="@+id/imageView4"
+                    android:layout_alignLeft="@+id/imageView4"
+                    android:layout_alignEnd="@+id/listcategories_button"
+                    android:layout_alignRight="@+id/listcategories_button"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="47dp"
+                    android:layout_marginRight="47dp"
+                    android:layout_marginBottom="3dp"
+                    android:gravity="left|fill_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="FSL OF THE DAY"
+                    android:textSize="18sp"
+                    app:fontFamily="@font/raleway"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/listcategories_button"
+                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginRight="1dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/listcategories_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/home" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/homefav_button"
+                    android:layout_width="45dp"
+                    android:layout_height="52dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rightarrow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/listcategories_text"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="288dp"
+                    android:layout_height="52dp"
+                    android:layout_alignStart="@+id/imageView4"
+                    android:layout_alignLeft="@+id/imageView4"
+                    android:layout_alignEnd="@+id/listcategories_button"
+                    android:layout_alignRight="@+id/listcategories_button"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="47dp"
+                    android:layout_marginRight="47dp"
+                    android:layout_marginBottom="3dp"
+                    android:gravity="left|fill_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="FAVORITES"
+                    android:textSize="18sp"
+                    app:fontFamily="@font/raleway"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/listcategories_button"
+                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginRight="1dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/listcategories_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/favorites" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/homedict_button"
+                    android:layout_width="45dp"
+                    android:layout_height="52dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rightarrow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/listcategories_text"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="288dp"
+                    android:layout_height="52dp"
+                    android:layout_alignStart="@+id/imageView4"
+                    android:layout_alignLeft="@+id/imageView4"
+                    android:layout_alignEnd="@+id/listcategories_button"
+                    android:layout_alignRight="@+id/listcategories_button"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="47dp"
+                    android:layout_marginRight="47dp"
+                    android:layout_marginBottom="3dp"
+                    android:gravity="left|fill_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="DICTIONARY"
+                    android:textSize="18sp"
+                    app:fontFamily="@font/raleway"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/listcategories_button"
+                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginRight="1dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/listcategories_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/dictionary" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/homecat_button"
+                    android:layout_width="45dp"
+                    android:layout_height="52dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rightarrow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/listcategories_text"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="288dp"
+                    android:layout_height="52dp"
+                    android:layout_alignStart="@+id/imageView4"
+                    android:layout_alignLeft="@+id/imageView4"
+                    android:layout_alignEnd="@+id/listcategories_button"
+                    android:layout_alignRight="@+id/listcategories_button"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="47dp"
+                    android:layout_marginRight="47dp"
+                    android:layout_marginBottom="3dp"
+                    android:gravity="left|fill_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="CATEGORIES"
+                    android:textSize="18sp"
+                    app:fontFamily="@font/raleway"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/listcategories_button"
+                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginRight="1dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/listcategories_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/categories" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/homequiz_button"
+                    android:layout_width="45dp"
+                    android:layout_height="52dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rightarrow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/listcategories_text"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="288dp"
+                    android:layout_height="52dp"
+                    android:layout_alignStart="@+id/imageView4"
+                    android:layout_alignLeft="@+id/imageView4"
+                    android:layout_alignEnd="@+id/listcategories_button"
+                    android:layout_alignRight="@+id/listcategories_button"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="47dp"
+                    android:layout_marginRight="47dp"
+                    android:layout_marginBottom="3dp"
+                    android:gravity="left|fill_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="QUIZZES"
+                    android:textSize="18sp"
+                    app:fontFamily="@font/raleway"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/listcategories_button"
+                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/homedic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginRight="1dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/listcategories_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/quizzes" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="15dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/childrenhome" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="301dp"
+            android:layout_height="44dp"
+            android:layout_alignEnd="@+id/imageView2"
+            android:layout_alignRight="@+id/imageView2"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginLeft="42dp"
+            android:layout_marginTop="113dp"
+            android:layout_marginEnd="41dp"
+            android:layout_marginRight="41dp"
+            android:layout_marginBottom="117dp"
+            android:gravity="center"
+            android:text="Filipino Sign Language "
+            android:textColor="@color/White"
+            android:textSize="24sp"
+            app:fontFamily="@font/raleway" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="183dp"
+            android:layout_height="39dp"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="101dp"
+            android:layout_marginLeft="101dp"
+            android:layout_marginTop="142dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginBottom="93dp"
+            android:gravity="center_vertical|center"
+            android:text="Application"
+            android:textColor="@color/Blue"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
+
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView
@@ -29,6 +389,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"
-        app:menu="@menu/navigation_menu"></android.support.design.widget.NavigationView>
+        app:menu="@menu/navigation_menu">
+
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>
