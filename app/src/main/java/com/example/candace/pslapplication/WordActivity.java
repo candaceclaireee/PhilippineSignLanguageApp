@@ -10,16 +10,28 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class WordActivity extends AppCompatActivity {
 
     private TextView word_text;
     private TextView wordFilipino_text;
+    private Button favorite;
 
     /* For the Navigation Menu */
     protected DrawerLayout drawerLayout;
@@ -29,31 +41,93 @@ public class WordActivity extends AppCompatActivity {
     /* For the GIF Viewer */
     private ImageView word_image;
 
+    /* For database access */
+    private DatabaseReference mDatabase;
+    private ArrayList<WordModel> words;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_word);
 
+        words = new ArrayList<WordModel>();
+
         word_text = findViewById(R.id.word_text);
         wordFilipino_text = findViewById(R.id.wordFilipino_text);
         word_image = findViewById(R.id.word_image);
+   //     favorite = findViewById(R.id.favorite);
 
         Intent intent = getIntent();
         String word = intent.getStringExtra("WORD");
-        String wordFilipino = intent.getStringExtra("WORDFILIPINO");
-        String category = intent.getStringExtra("CATEGORY");
-        boolean favorite = intent.getBooleanExtra("FAVORITE", true);
+        String wordfil = intent.getStringExtra("WORDFILIPINO");
+        String cat = intent.getStringExtra("CATEGORY");
+        String fave = intent.getStringExtra("FAVORITE");
         String link = intent.getStringExtra("LINK");
 
+     //   initializeFirebaseData();
+
         initializeNavigationMenu(word);
+
+//        if(wModel.getFavorite() == true){
+//            favorite.setText(getResources().getString(R.string.remove_fave));
+//        }
+//        else favorite.setText(getResources().getString(R.string.add_fave));
+//
+//        favorite.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(wModel.getFavorite() == true){
+//                    wModel.setFavorite(false);
+//                    favorite.setText(getResources().getString(R.string.add_fave));
+//                }
+//                else{
+//                    wModel.setFavorite(true);
+//                    favorite.setText(getResources().getString(R.string.remove_fave));
+//                }
+//            }
+//        });
 
         /* For the GIF Viewer */
         Glide.with(this.getApplicationContext()).load(link).into(word_image);
 
         word_text.setText(word);
-        wordFilipino_text.setText(wordFilipino);
+        wordFilipino_text.setText(wordfil);
     }
+
+     /*For the Firebase Database
+    public void initializeFirebaseData(){
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("words");
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Iterator<DataSnapshot> dataSnapshots = dataSnapshot.getChildren().iterator();
+                while (dataSnapshots.hasNext()) {
+                    DataSnapshot dataSnapshotChild = dataSnapshots.next();
+                    WordModel model = dataSnapshotChild.getValue(WordModel.class);
+                    //if(model.getWord() == "a")
+                        words.add(model);
+
+                }
+                storageContainer(words);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
+        });
+    }
+    /* For the Firebase Database
+    public void storageContainer(ArrayList<WordModel> words) {
+        this.words = words;
+
+        for(WordModel w: words){
+            if(w.getWord().equalsIgnoreCase("a")){
+                model = w;
+                break;
+            }
+        }
+    } */
 
     public void initializeNavigationMenu(String word){
         drawerLayout = findViewById(R.id.activity_word);

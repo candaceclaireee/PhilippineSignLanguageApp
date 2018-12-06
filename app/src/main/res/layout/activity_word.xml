@@ -11,7 +11,7 @@ android:layout_height="match_parent"
 android:background="@color/White"
 android:visibility="visible">
 
-    <android.support.constraint.ConstraintLayout 
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".WordActivity">
@@ -28,6 +28,7 @@ android:visibility="visible">
             android:layout_marginBottom="9dp"
             app:layout_constraintBottom_toTopOf="@+id/word_text"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/groupimg" />
@@ -36,17 +37,18 @@ android:visibility="visible">
             android:id="@+id/word_text"
             android:layout_width="0dp"
             android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginLeft="19dp"
             android:layout_marginTop="9dp"
-            android:layout_marginEnd="22dp"
-            android:layout_marginRight="22dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginRight="19dp"
             android:gravity="center"
             android:text="English Word"
             android:textSize="18sp"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toTopOf="@+id/wordFilipino_text"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/word_image" />
 
@@ -54,10 +56,10 @@ android:visibility="visible">
             android:id="@+id/wordFilipino_text"
             android:layout_width="0dp"
             android:layout_height="35dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="22dp"
-            android:layout_marginRight="22dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginRight="19dp"
             android:layout_marginBottom="119dp"
             android:gravity="center"
             android:text="Filipino Word"
@@ -65,8 +67,26 @@ android:visibility="visible">
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/word_text" />
+
+        <Button
+            android:id="@+id/favorite"
+            android:layout_width="343dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginRight="19dp"
+            android:layout_marginBottom="57dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wordFilipino_text"
+            app:layout_constraintVertical_bias="0.0" />
     </android.support.constraint.ConstraintLayout>
 
 <android.support.design.widget.NavigationView

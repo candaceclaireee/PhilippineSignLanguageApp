@@ -1,5 +1,8 @@
 package com.example.candace.pslapplication;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.Serializable;
 
 public class WordModel implements Serializable {
@@ -10,12 +13,16 @@ public class WordModel implements Serializable {
     private boolean favorite;
     private String link;
 
+    private DatabaseReference mDatabase;
+
     public WordModel(String w, String wF, String c, boolean f, String l){
         word = w;
         wordFilipino = wF;
         category = c;
         favorite = f;
         link = l;
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("words");
+
     }
 
     public WordModel(){ }  // this is a parameter-less constructor called upon firebase initialization
@@ -50,6 +57,12 @@ public class WordModel implements Serializable {
 
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
+
+        try {
+            mDatabase.child(word).child("favorite").setValue(favorite);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public String getLink() {

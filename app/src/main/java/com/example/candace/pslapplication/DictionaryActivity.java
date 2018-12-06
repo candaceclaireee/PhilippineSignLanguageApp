@@ -9,8 +9,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.util.Dictionary;
@@ -22,6 +28,12 @@ public class DictionaryActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawer;
     private NavigationView navView;
 
+    /* For the Recycler View */
+    private RecyclerView recyclerArea;
+    private RecyclerView.LayoutManager manager;
+    private DictionaryAdapter adapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +41,16 @@ public class DictionaryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dictionary);
 
         initializeNavigationMenu();
+
+        /* For the Recycler View */
+        recyclerArea = findViewById(R.id.dictionary_view);
+        manager = new LinearLayoutManager(this);
+        adapter = new DictionaryAdapter(this, null);
+        recyclerArea.setLayoutManager(manager);
+        recyclerArea.setAdapter(adapter);
+        recyclerArea.addItemDecoration(new DividerItemDecoration(recyclerArea.getContext(),
+                DividerItemDecoration.VERTICAL));
+
     }
 
     /* For Navigation Menu */

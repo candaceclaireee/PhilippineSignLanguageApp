@@ -4,6 +4,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,38 +16,39 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesHolder> {
+public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryHolder> {
 
-    private FavoritesActivity activity;
+    private DictionaryActivity activity;
+    private String search;
 
     /* For the Firebase Database */
     private DatabaseReference mDatabase;
-    private ArrayList<WordModel> favoritesList;
+    private ArrayList<WordModel> allWords;
 
-    public FavoritesAdapter(FavoritesActivity activity){
-        favoritesList = new ArrayList<WordModel>();
+    public DictionaryAdapter(DictionaryActivity activity, String search){
+        allWords = new ArrayList<WordModel>();
         this.activity = activity;
         initializeFirebaseData();
     }
 
     @Override
-    public FavoritesHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public DictionaryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.row_favorites, parent, false);
+        View view = inflater.inflate(R.layout.row_dictionary, parent, false);
 
-        FavoritesHolder holder = new FavoritesHolder(view);
+        DictionaryHolder holder = new DictionaryHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(FavoritesHolder holder, final int position) {
-        holder.setWord(favoritesList.get(position));
+    public void onBindViewHolder(DictionaryHolder holder, final int position) {
+        holder.setWord(allWords.get(position));
         holder.setActivity(activity);
     }
 
     @Override
     public int getItemCount() {
-        return favoritesList.size();
+        return allWords.size();
     }
 
     /* For the Firebase Database */
@@ -59,9 +62,9 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesHolder> {
                 while (dataSnapshots.hasNext()) {
                     DataSnapshot dataSnapshotChild = dataSnapshots.next();
                     WordModel word = dataSnapshotChild.getValue(WordModel.class);
-
+                    allWords.add(word);
                 }
-                storageContainer(favoritesList);
+                storageContainer(allWords);
             }
 
             @Override
@@ -69,17 +72,9 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesHolder> {
         });
     }
 
+    /* For the Firebase Database */
     public void storageContainer(ArrayList<WordModel> words) {
-        this.favoritesList = words;
-
-        ArrayList<WordModel> faves = new ArrayList<>();
-
-        for(WordModel w: words){
-            if(w.getFavorite() == true){
-                faves.add(w);
-            }
-        }
-        this.favoritesList = faves;
+        this.allWords = words;
     }
 
 }

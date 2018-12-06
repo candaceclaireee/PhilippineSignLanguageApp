@@ -6,39 +6,42 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class FavoritesHolder extends RecyclerView.ViewHolder{
+public class DictionaryHolder extends RecyclerView.ViewHolder{
 
-    private TextView favorites_text;
+    private TextView dict_text;
     private ImageButton btn;
-    private FavoritesActivity fave;
+    private DictionaryActivity dict;
     private String word;
     private WordModel model;
 
-    public FavoritesHolder(View view) {
+    public DictionaryHolder(View view) {
         super(view);
 
-        favorites_text = view.findViewById(R.id.favorite_text);btn = view.findViewById(R.id.gotonext);
+        dict_text = view.findViewById(R.id.dict_text);
+        btn = view.findViewById(R.id.gotonext);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(fave.getApplicationContext(), WordActivity.class);
+                Intent intent = new Intent(dict.getApplicationContext(), WordActivity.class);
                 intent.putExtra("WORD",model.getWord());
                 intent.putExtra("WORDFILIPINO",model.getWordFilipino());
                 intent.putExtra("CATEGORY",model.getCategory());
                 intent.putExtra("FAVORITE",model.getFavorite());
                 intent.putExtra("LINK",model.getLink());
-                fave.startActivity(intent);
+                model.setFavorite(true);
+                dict.startActivity(intent);
             }
         });
     }
 
     public void setWord(WordModel word){
         this.word = word.getWord();
-        favorites_text.setText(word.getWord());
+        dict_text.setText(word.getWord());
         model = word;
     }
-    public void setActivity(FavoritesActivity activity){
-        fave = activity;
+    public void setActivity(DictionaryActivity activity){
+        dict = activity;
     }
+
 }
