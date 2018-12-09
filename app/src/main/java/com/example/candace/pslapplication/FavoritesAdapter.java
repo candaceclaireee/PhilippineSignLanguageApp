@@ -59,7 +59,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesHolder> {
                 while (dataSnapshots.hasNext()) {
                     DataSnapshot dataSnapshotChild = dataSnapshots.next();
                     WordModel word = dataSnapshotChild.getValue(WordModel.class);
-
+                    favoritesList.add(word);
                 }
                 storageContainer(favoritesList);
             }
@@ -69,17 +69,20 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesHolder> {
         });
     }
 
+    /* For the Firebase Database */
     public void storageContainer(ArrayList<WordModel> words) {
-        this.favoritesList = words;
+        //this.favoritesList = words;
 
-        ArrayList<WordModel> faves = new ArrayList<>();
+        ArrayList<WordModel> wm = new ArrayList<WordModel>();
 
         for(WordModel w: words){
-            if(w.getFavorite() == true){
-                faves.add(w);
-            }
+            if(w.getFavorite() == true)
+                wm.add(w);
+
         }
-        this.favoritesList = faves;
+
+        favoritesList = wm;
     }
+
 
 }

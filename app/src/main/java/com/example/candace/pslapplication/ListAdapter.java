@@ -14,11 +14,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListHolder> {
 
     public ListAdapter(ListActivity activity, String name, ArrayList<WordModel> list){
         this.activity = activity;
-        wordsList = new ArrayList<WordModel>();
-
-        for(int i=0;i<list.size();i++)
-            wordsList.add(new WordModel(list.get(i).getWord(), list.get(i).getWordFilipino(), list.get(i).getCategory(),
-                    list.get(i).getFavorite(), list.get(i).getLink()));
+        wordsList = new ArrayList<WordModel>(list);
     }
 
     @Override
@@ -32,11 +28,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListHolder> {
 
     @Override
     public void onBindViewHolder(ListHolder holder, final int position) {
-        holder.setWord(wordsList.get(position).getWord());
-        holder.setWordFilipino(wordsList.get(position).getWordFilipino());
-        holder.setLink(wordsList.get(position).getLink());
-        holder.setFavorite(wordsList.get(position).getFavorite());
-        holder.setCategory(wordsList.get(position).getCategory());
+        holder.setModel(wordsList.get(position));
     }
 
     @Override

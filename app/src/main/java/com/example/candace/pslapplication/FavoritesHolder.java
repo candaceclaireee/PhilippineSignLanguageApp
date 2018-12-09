@@ -17,17 +17,14 @@ public class FavoritesHolder extends RecyclerView.ViewHolder{
     public FavoritesHolder(View view) {
         super(view);
 
-        favorites_text = view.findViewById(R.id.favorite_text);btn = view.findViewById(R.id.gotonext);
+        favorites_text = view.findViewById(R.id.favorite_text);
+        btn = view.findViewById(R.id.btn);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(fave.getApplicationContext(), WordActivity.class);
-                intent.putExtra("WORD",model.getWord());
-                intent.putExtra("WORDFILIPINO",model.getWordFilipino());
-                intent.putExtra("CATEGORY",model.getCategory());
-                intent.putExtra("FAVORITE",model.getFavorite());
-                intent.putExtra("LINK",model.getLink());
+                intent.putExtra("WordModelObject", model);
                 fave.startActivity(intent);
             }
         });

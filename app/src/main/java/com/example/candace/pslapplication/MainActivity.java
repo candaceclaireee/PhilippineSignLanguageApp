@@ -71,13 +71,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this.getApplicationContext(), WordActivity.class);
-
-                intent.putExtra("WORD",todaysFavoriteWord.getWord());
-                intent.putExtra("WORDFILIPINO",todaysFavoriteWord.getWordFilipino());
-                intent.putExtra("CATEGORY",todaysFavoriteWord.getCategory());
-                intent.putExtra("FAVORITE",todaysFavoriteWord.getFavorite());
-                intent.putExtra("LINK",todaysFavoriteWord.getLink());
-
+                intent.putExtra("WordModelObject", todaysFavoriteWord);
                 MainActivity.this.startActivity(intent);
             }
         });

@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -45,12 +47,35 @@ public class DictionaryActivity extends AppCompatActivity {
         /* For the Recycler View */
         recyclerArea = findViewById(R.id.dictionary_view);
         manager = new LinearLayoutManager(this);
-        adapter = new DictionaryAdapter(this, null);
+        adapter = new DictionaryAdapter(this);
         recyclerArea.setLayoutManager(manager);
         recyclerArea.setAdapter(adapter);
         recyclerArea.addItemDecoration(new DividerItemDecoration(recyclerArea.getContext(),
                 DividerItemDecoration.VERTICAL));
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.dictionary_search, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        android.support.v7.widget.SearchView searchView = (android.support.v7.widget.SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.getFilter().filter(s);
+                return false;
+            }
+        });
+        return true;
     }
 
     /* For Navigation Menu */

@@ -24,12 +24,7 @@ public class DictionaryHolder extends RecyclerView.ViewHolder{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(dict.getApplicationContext(), WordActivity.class);
-                intent.putExtra("WORD",model.getWord());
-                intent.putExtra("WORDFILIPINO",model.getWordFilipino());
-                intent.putExtra("CATEGORY",model.getCategory());
-                intent.putExtra("FAVORITE",model.getFavorite());
-                intent.putExtra("LINK",model.getLink());
-                model.setFavorite(true);
+                intent.putExtra("WordModelObject", model);
                 dict.startActivity(intent);
             }
         });

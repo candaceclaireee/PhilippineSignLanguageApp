@@ -1,7 +1,14 @@
 package com.example.candace.pslapplication;
 
+import android.support.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 
@@ -14,6 +21,7 @@ public class WordModel implements Serializable {
     private String link;
 
     private DatabaseReference mDatabase;
+    private DatabaseReference mRef;
 
     public WordModel(String w, String wF, String c, boolean f, String l){
         word = w;
@@ -58,11 +66,6 @@ public class WordModel implements Serializable {
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
 
-        try {
-            mDatabase.child(word).child("favorite").setValue(favorite);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public String getLink() {

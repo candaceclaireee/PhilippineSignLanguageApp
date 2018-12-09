@@ -16,6 +16,7 @@ public class ListHolder extends RecyclerView.ViewHolder{
     private String category;
     private boolean favorite;
     private String link;
+    private WordModel model;
 
 
     public ListHolder(View view,  final ListActivity activity) {
@@ -28,16 +29,15 @@ public class ListHolder extends RecyclerView.ViewHolder{
             public void onClick(View view) {
 
                 Intent intent = new Intent(activity.getApplicationContext(), WordActivity.class);
-
-                intent.putExtra("WORD",word);
-                intent.putExtra("WORDFILIPINO",wordFilipino);
-                intent.putExtra("CATEGORY",category);
-                intent.putExtra("FAVORITE",favorite);
-                intent.putExtra("LINK",link);
-
+                intent.putExtra("WordModelObject", model);
                 activity.startActivity(intent);
             }
         });
+    }
+
+    public void setModel(WordModel model){
+        this.model = model;
+        listcategories_text.setText(model.getWord());
     }
 
     public String getWord() {

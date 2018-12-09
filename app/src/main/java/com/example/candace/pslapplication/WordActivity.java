@@ -41,9 +41,6 @@ public class WordActivity extends AppCompatActivity {
     /* For the GIF Viewer */
     private ImageView word_image;
 
-    /* For database access */
-    private DatabaseReference mDatabase;
-    private ArrayList<WordModel> words;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,83 +48,44 @@ public class WordActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_word);
 
-        words = new ArrayList<WordModel>();
-
         word_text = findViewById(R.id.word_text);
         wordFilipino_text = findViewById(R.id.wordFilipino_text);
         word_image = findViewById(R.id.word_image);
-   //     favorite = findViewById(R.id.favorite);
+        favorite = findViewById(R.id.favorite);
 
         Intent intent = getIntent();
-        String word = intent.getStringExtra("WORD");
-        String wordfil = intent.getStringExtra("WORDFILIPINO");
-        String cat = intent.getStringExtra("CATEGORY");
-        String fave = intent.getStringExtra("FAVORITE");
-        String link = intent.getStringExtra("LINK");
+        final WordModel model = (WordModel)intent.getSerializableExtra("WordModelObject");
 
-     //   initializeFirebaseData();
 
-        initializeNavigationMenu(word);
-
-//        if(wModel.getFavorite() == true){
-//            favorite.setText(getResources().getString(R.string.remove_fave));
-//        }
-//        else favorite.setText(getResources().getString(R.string.add_fave));
-//
-//        favorite.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(wModel.getFavorite() == true){
-//                    wModel.setFavorite(false);
-//                    favorite.setText(getResources().getString(R.string.add_fave));
-//                }
-//                else{
-//                    wModel.setFavorite(true);
-//                    favorite.setText(getResources().getString(R.string.remove_fave));
-//                }
-//            }
-//        });
+        initializeNavigationMenu(model.getWord());
 
         /* For the GIF Viewer */
-        Glide.with(this.getApplicationContext()).load(link).into(word_image);
+        Glide.with(this.getApplicationContext()).load(model.getLink()).into(word_image);
 
-        word_text.setText(word);
-        wordFilipino_text.setText(wordfil);
-    }
+        word_text.setText(model.getWord());
+        wordFilipino_text.setText(model.getWordFilipino());
 
-     /*For the Firebase Database
-    public void initializeFirebaseData(){
+        if(model.getFavorite() == true){
+            favorite.setText(getResources().getString(R.string.remove_fave));
+        }
+        else favorite.setText(getResources().getString(R.string.add_fave));
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("words");
-        mDatabase.addValueEventListener(new ValueEventListener() {
+        favorite.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Iterator<DataSnapshot> dataSnapshots = dataSnapshot.getChildren().iterator();
-                while (dataSnapshots.hasNext()) {
-                    DataSnapshot dataSnapshotChild = dataSnapshots.next();
-                    WordModel model = dataSnapshotChild.getValue(WordModel.class);
-                    //if(model.getWord() == "a")
-                        words.add(model);
-
+            public void onClick(View view) {
+                if(model.getFavorite() == true){
+                    model.setFavorite(false);
+                    favorite.setText(getResources().getString(R.string.add_fave));
                 }
-                storageContainer(words);
+                else{
+                    model.setFavorite(true);
+                    favorite.setText(getResources().getString(R.string.remove_fave));
+                }
             }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) { }
         });
     }
-    /* For the Firebase Database
-    public void storageContainer(ArrayList<WordModel> words) {
-        this.words = words;
 
-        for(WordModel w: words){
-            if(w.getWord().equalsIgnoreCase("a")){
-                model = w;
-                break;
-            }
-        }
-    } */
+
 
     public void initializeNavigationMenu(String word){
         drawerLayout = findViewById(R.id.activity_word);
