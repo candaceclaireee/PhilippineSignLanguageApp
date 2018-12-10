@@ -25,7 +25,8 @@
         <activity android:name=".CategoriesActivity" />
         <activity android:name=".QuizzesActivity" />
         <activity android:name=".WordActivity" />
-        <activity android:name=".ListActivity"></activity>
+        <activity android:name=".ListActivity" />
+        <activity android:name=".LevelActivity"></activity>
     </application>
 
 </manifest>

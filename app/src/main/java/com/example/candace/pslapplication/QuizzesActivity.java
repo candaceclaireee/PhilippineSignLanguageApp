@@ -9,6 +9,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
@@ -19,11 +21,22 @@ public class QuizzesActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawer;
     private NavigationView navView;
 
+    /* For the Recycler View */
+    private RecyclerView recyclerArea;
+    private RecyclerView.LayoutManager manager;
+    private QuizAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_quizzes);
+
+        recyclerArea = findViewById(R.id.quiz_recycler);
+        manager = new LinearLayoutManager(this);
+        adapter = new QuizAdapter(this);
+        recyclerArea.setLayoutManager(manager);
+        recyclerArea.setAdapter(adapter);
 
         initializeNavigationMenu();
     }
