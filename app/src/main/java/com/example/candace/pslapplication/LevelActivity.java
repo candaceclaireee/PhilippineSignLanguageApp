@@ -22,22 +22,31 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class LevelActivity extends AppCompatActivity {
 
     /* QUIZ VARIABLES */
     private int points=0;
-    private int tries=2;
+    private int lives=10;
+    private TextView pts;
+    private String ans;
+    private String filAns;
+    private Random rand;
+    private TextView lvs;
+    private LevelActivity activity;
 
     /* For the Navigation Menu */
     protected DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawer;
     private NavigationView navView;
+
 
     /* For Alarm */
     private int jobID;
@@ -51,18 +60,25 @@ public class LevelActivity extends AppCompatActivity {
     /* For level list*/
     private ArrayList<LevelModel> list;
     int index=0;
+
     /* For dialog */
     private ImageView gifHolder;
     private Button submit;
     private EditText answer;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        rand = new Random();
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_level);
 
+        activity = this;
+
+        lvs = findViewById(R.id.live);
+        pts = findViewById(R.id.points);
         gifHolder = findViewById(R.id.signImage);
         submit = findViewById(R.id.submit);
         answer = findViewById(R.id.editText);
@@ -71,7 +87,7 @@ public class LevelActivity extends AppCompatActivity {
         String level = intent.getStringExtra("LEVEL");
         list = (ArrayList<LevelModel>)intent.getSerializableExtra("LEVEL_LIST");
 
-
+        index = rand.nextInt(list.size());
         /* FOR ALARM SCHEDULE */
         jobID = 1;
         IntentFilter filter = new IntentFilter();
@@ -83,49 +99,65 @@ public class LevelActivity extends AppCompatActivity {
         initializeNavigationMenu(level);
 
         /* For the GIF Viewer */
-        Glide.with(this.getApplicationContext()).load(list.get(index).getLink()).into(gifHolder);
-        Log.d("DEBUGGING", list.get(index).getWord());
-        final String ans = list.get(index).getWord();
-        final String filAns = list.get(index).getWordFilipino();
+        game();
+
+        lvs.setText("Lives: "+lives);
+        pts.setText("Points: "+points);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /* For the GIF Viewer */
-                Log.d("DEBUGGING - ANSWER", answer.getText().toString());
-                if((tries>=2 && tries>0) && (answer.getText().toString().contentEquals(ans) || answer.getText().toString().contentEquals(filAns) ) ){
-                    index++;
-                    points+=2;
-                    correctDialog();
-                    Log.d("DEBUGGING", "CORRECT");
-                }
-                else if((tries<=2 && tries>0) && !(answer.getText().toString().contentEquals(ans) || answer.getText().toString().contentEquals(filAns))){
-                    Log.d("DEBUGGING", "WRONG");
-                    tries--;
-                    wrongDialog();
-                }
-                else if(tries==0)
-                    wrongDialog();
+            ans = list.get(index).getWord();
+            filAns = list.get(index).getWordFilipino();
+
+            if((lives>1 && lives<=10) && (answer.getText().toString().equalsIgnoreCase(ans) || answer.getText().toString().equalsIgnoreCase(filAns) ) ){
+                index = rand.nextInt(list.size());
+                points+=2;
+                correctDialog();
+                game();
+            }
+            else if((lives>1 && lives<=10) && (!(answer.getText().toString().equals(ans)) || !(answer.getText().toString().equalsIgnoreCase(filAns)))){
+                lives--;
+                index = rand.nextInt(list.size());
+                tryDialog();
+                game();
+            }
+            else if(lives==1) {
+                wrongDialog();
+                submit.setEnabled(false);
+                Intent intent = new Intent(activity.getApplicationContext(), QuizzesActivity.class);
+               // intent.putExtra("POINTS", String.valueOf(points));
+                LevelActivity.this.startActivity(intent);
+
+            }
+
+            pts.setText("Points: "+points);
+            lvs.setText("Level: "+lives);
 
             }
         });
 
     }
 
+    public void game(){
+        index = rand.nextInt(list.size());
+        submit.setEnabled(true);
+        Glide.with(this.getApplicationContext()).load(list.get(index).getLink()).into(gifHolder);
+        Log.d("DEBUGGING", list.get(index).getWord());
+        answer.setText(null);
+        Log.d("DEBUGGING", String.valueOf(index));
+    }
     /* ------------------------------ For Alarm -------------------------------- */
     public void triggerAlarm(){
         Intent alarmIntent = new Intent(UI_UPDATE_TAG);
         alarmIntent.putExtra("ID", jobID);
         jobID++;
-
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this,1000000+jobID, alarmIntent, 0);
-
         AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         manager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + TIME, pendingIntent);
     }
 
     public void stopAlarm(){
         stop = true;
-
     }
 
     public void makeService(){
@@ -175,9 +207,16 @@ public class LevelActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    private void tryDialog(){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("WRONG ANSWER, Try Again!");
+        AlertDialog dialog = builder1.create();
+        dialog.show();
+    }
+
     private void wrongDialog(){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("WRONG ANSWER!");
+        builder1.setMessage("YOU RAN OUT OF LIVES!");
         AlertDialog dialog = builder1.create();
         dialog.show();
     }
@@ -187,10 +226,6 @@ public class LevelActivity extends AppCompatActivity {
         AlertDialog dialog = builder1.create();
         dialog.show();
     }
-
-
-
-
 
     /* --------------------------------------------------------------------------------------------- */
 

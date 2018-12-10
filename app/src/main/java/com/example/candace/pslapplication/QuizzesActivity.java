@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
@@ -38,6 +39,10 @@ public class QuizzesActivity extends AppCompatActivity {
         recyclerArea.setLayoutManager(manager);
         recyclerArea.setAdapter(adapter);
 
+        /*Intent intent = getIntent();
+        String points = intent.getStringExtra("POINTS");
+        Log.d("DEBUGGING", points);
+*/
         initializeNavigationMenu();
     }
 
