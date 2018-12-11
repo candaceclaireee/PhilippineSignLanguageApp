@@ -71,6 +71,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesHolder> {
                 while (dataSnapshots.hasNext()) {
                     DataSnapshot dataSnapshotChild = dataSnapshots.next();
                     WordModel word = dataSnapshotChild.getValue(WordModel.class);
+                    notifyDataSetChanged();
                     words.add(word);
                 }
                 storageContainer(words);

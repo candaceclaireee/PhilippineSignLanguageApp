@@ -66,6 +66,7 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryHolder> im
                 while (dataSnapshots.hasNext()) {
                     DataSnapshot dataSnapshotChild = dataSnapshots.next();
                     WordModel word = dataSnapshotChild.getValue(WordModel.class);
+                    notifyDataSetChanged();
                     allWords.add(word);
                 }
                 storageContainer(allWords);

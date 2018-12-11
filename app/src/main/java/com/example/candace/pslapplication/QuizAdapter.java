@@ -91,6 +91,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizHolder> {
                 while (dataSnapshots.hasNext()) {
                     DataSnapshot dataSnapshotChild = dataSnapshots.next();
                     LevelModel word = dataSnapshotChild.getValue(LevelModel.class);
+                    notifyDataSetChanged();
                     words.add(word);
                 }
                 storageContainer(words);

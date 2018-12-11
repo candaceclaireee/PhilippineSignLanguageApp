@@ -59,6 +59,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesHolder> {
                 while (dataSnapshots.hasNext()) {
                     DataSnapshot dataSnapshotChild = dataSnapshots.next();
                     WordModel word = dataSnapshotChild.getValue(WordModel.class);
+                    notifyDataSetChanged();
                     favoritesList.add(word);
                 }
                 storageContainer(favoritesList);
