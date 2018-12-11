@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -46,6 +47,8 @@ public class ListActivity extends AppCompatActivity {
         adapter = new ListAdapter(this, name, list);
         recyclerArea.setLayoutManager(manager);
         recyclerArea.setAdapter(adapter);
+        recyclerArea.addItemDecoration(new DividerItemDecoration(recyclerArea.getContext(),
+                DividerItemDecoration.VERTICAL));
     }
 
     /* For Navigation Menu */

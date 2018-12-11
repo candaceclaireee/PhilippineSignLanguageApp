@@ -54,8 +54,6 @@ public class CategoriesActivity extends AppCompatActivity {
         adapter = new CategoriesAdapter(this);
         recyclerArea.setLayoutManager(manager);
         recyclerArea.setAdapter(adapter);
-        recyclerArea.addItemDecoration(new DividerItemDecoration(recyclerArea.getContext(),
-                DividerItemDecoration.VERTICAL));
     }
 
     /* For Navigation Menu */

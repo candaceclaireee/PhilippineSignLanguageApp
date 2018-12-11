@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private Button homedict_button;
     private Button homecat_button;
     private Button homequiz_button;
+    private Button aboutus_button;
     private TextView homefsl_text;
     private WordModel todaysFavoriteWord;
 
@@ -104,6 +105,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), QuizzesActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+        aboutus_button = findViewById(R.id.aboutus_button);
+        aboutus_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
                 MainActivity.this.startActivity(intent);
             }
         });

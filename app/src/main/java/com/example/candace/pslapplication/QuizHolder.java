@@ -26,12 +26,12 @@ public class QuizHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 Log.d("DEBUGGING", String.valueOf(level));
-                if(level=="1")
-                    img.setText("1");
-                else if(level=="2")
-                    img.setText("2");
-                else if(level=="3")
-                    img.setText("3");
+//                if(level=="1")
+//                    img.setText("1");
+//                else if(level=="2")
+//                    img.setText("2");
+//                else if(level=="3")
+//                    img.setText("3");
 
                 Intent intent = new Intent(activity.getApplicationContext(), LevelActivity.class);
                 intent.putExtra("LEVEL", level);
@@ -44,7 +44,7 @@ public class QuizHolder extends RecyclerView.ViewHolder {
     }
     public void setLevel(String lvl) {
         this.level = lvl;
-        img.setText(lvl);
+//        img.setText(lvl);
     }
     public void setImgBtn(int newImg){
         img.setBackgroundResource(newImg);
