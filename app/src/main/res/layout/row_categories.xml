@@ -39,7 +39,6 @@
             android:textColor="@color/White"
             android:textSize="30sp"
             app:fontFamily="@font/raleway" />
-
     </FrameLayout>
 
 </LinearLayout>
