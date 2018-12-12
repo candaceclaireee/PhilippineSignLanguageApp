@@ -44,6 +44,7 @@ public class WordActivity extends AppCompatActivity {
     /* For the Firebase */
     private DatabaseReference mDatabase;
 
+    private int image[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,13 @@ public class WordActivity extends AppCompatActivity {
         wordFilipino_text = findViewById(R.id.wordFilipino_text);
         word_image = findViewById(R.id.word_image);
         favorite = findViewById(R.id.favorite);
+
+        image = new int[]{
+                R.drawable.heart,
+                R.drawable.heart_clicked,
+        };
+
+
 
         Intent intent = getIntent();
         final WordModel model = (WordModel)intent.getSerializableExtra("WordModelObject");
@@ -69,9 +77,9 @@ public class WordActivity extends AppCompatActivity {
         wordFilipino_text.setText(model.getWordFilipino());
 
         if(model.getFavorite() == true){
-            favorite.setText(getResources().getString(R.string.remove_fave));
+            favorite.setBackgroundResource(image[1]);
         }
-        else favorite.setText(getResources().getString(R.string.add_fave));
+        else favorite.setBackgroundResource(image[0]);
 
         favorite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +96,7 @@ public class WordActivity extends AppCompatActivity {
                                 if(model.getWord().equals(word.getWord())){
                                     DatabaseReference mDatabaseRef = postSnapshot.getRef().child("favorite");
                                     mDatabaseRef.setValue(false);
-
+                                    favorite.setBackgroundResource(image[0]);
                                     Toast.makeText(WordActivity.this, "Removed from Favorites!", Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -109,7 +117,7 @@ public class WordActivity extends AppCompatActivity {
                                 if(model.getWord().equals(word.getWord())){
                                     DatabaseReference mDatabaseRef = postSnapshot.getRef().child("favorite");
                                     mDatabaseRef.setValue(true);
-
+                                    favorite.setBackgroundResource(image[1]);
                                     Toast.makeText(WordActivity.this, "Added to Favorites!", Toast.LENGTH_LONG).show();
                                 }
                             }
