@@ -42,7 +42,7 @@ public class WordActivity extends AppCompatActivity {
     private ImageView word_image;
 
     /* For the Firebase */
-    DatabaseReference mDatabase;
+    private DatabaseReference mDatabase;
 
 
     @Override
@@ -78,7 +78,7 @@ public class WordActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(model.getFavorite() == true){
                     model.setFavorite(false);
-                    favorite.setText(getResources().getString(R.string.add_fave));
+//                    favorite.setText(getResources().getString(R.string.add_fave));
                     mDatabase = FirebaseDatabase.getInstance().getReference().child("words");
                     mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -88,16 +88,18 @@ public class WordActivity extends AppCompatActivity {
                                 if(model.getWord().equals(word.getWord())){
                                     DatabaseReference mDatabaseRef = postSnapshot.getRef().child("favorite");
                                     mDatabaseRef.setValue(false);
+
+                                    Toast.makeText(WordActivity.this, "Removed from Favorites!", Toast.LENGTH_LONG).show();
                                 }
                             }
-                        }   
+                        }
                         @Override
                         public void onCancelled(DatabaseError databaseError) { }
                     });
                 }
                 else{
                     model.setFavorite(true);
-                    favorite.setText(getResources().getString(R.string.remove_fave));
+//                    favorite.setText(getResources().getString(R.string.remove_fave));
                     mDatabase = FirebaseDatabase.getInstance().getReference().child("words");
                     mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -107,6 +109,8 @@ public class WordActivity extends AppCompatActivity {
                                 if(model.getWord().equals(word.getWord())){
                                     DatabaseReference mDatabaseRef = postSnapshot.getRef().child("favorite");
                                     mDatabaseRef.setValue(true);
+
+                                    Toast.makeText(WordActivity.this, "Added to Favorites!", Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
