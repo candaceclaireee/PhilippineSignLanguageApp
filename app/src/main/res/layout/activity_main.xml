@@ -102,6 +102,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/homefav_text"
                     android:layout_width="288dp"
                     android:layout_height="52dp"
                     android:layout_alignStart="@+id/imageView4"
@@ -161,6 +162,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/homedict_text"
                     android:layout_width="288dp"
                     android:layout_height="52dp"
                     android:layout_alignStart="@+id/imageView4"
@@ -220,6 +222,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/homecat_text"
                     android:layout_width="288dp"
                     android:layout_height="52dp"
                     android:layout_alignStart="@+id/imageView4"
@@ -279,6 +282,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/homequiz_text"
                     android:layout_width="288dp"
                     android:layout_height="52dp"
                     android:layout_alignStart="@+id/imageView4"
@@ -338,6 +342,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/aboutus_text"
                     android:layout_width="288dp"
                     android:layout_height="52dp"
                     android:layout_alignStart="@+id/imageView4"

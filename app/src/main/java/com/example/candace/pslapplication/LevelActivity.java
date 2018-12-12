@@ -131,7 +131,7 @@ public class LevelActivity extends AppCompatActivity {
             }
 
             pts.setText("Points: "+points);
-            lvs.setText("Level: "+lives);
+            lvs.setText("Lives: "+lives);
 
             }
         });

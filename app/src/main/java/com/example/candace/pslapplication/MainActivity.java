@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
     private Button homequiz_button;
     private Button aboutus_button;
     private TextView homefsl_text;
+    private TextView homefav_text;
+    private TextView homedict_text;
+    private TextView homecat_text;
+    private TextView homequiz_text;
+    private TextView aboutus_text;
+
     private WordModel todaysFavoriteWord;
 
     /* For the Navigation Menu */
@@ -56,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        homefsl_text = findViewById(R.id.homefsl_text);
 
         initializeFirebaseData();
 
@@ -76,6 +81,16 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
+        homefsl_text = findViewById(R.id.homefsl_text);
+        homefsl_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this.getApplicationContext(), WordActivity.class);
+                intent.putExtra("WordModelObject", todaysFavoriteWord);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
         homefav_button = findViewById(R.id.homefav_button);
         homefav_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +99,15 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
+        homefav_text = findViewById(R.id.homefav_text);
+        homefav_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), FavoritesActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
         homedict_button = findViewById(R.id.homedict_button);
         homedict_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +116,15 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
+        homedict_text = findViewById(R.id.homedict_text);
+        homedict_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DictionaryActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
         homecat_button = findViewById(R.id.homecat_button);
         homecat_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +133,15 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
+        homecat_text = findViewById(R.id.homecat_text);
+        homecat_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CategoriesActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
         homequiz_button = findViewById(R.id.homequiz_button);
         homequiz_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,8 +150,25 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
+        homequiz_text = findViewById(R.id.homequiz_text);
+        homequiz_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), QuizzesActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
         aboutus_button = findViewById(R.id.aboutus_button);
         aboutus_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+        aboutus_text = findViewById(R.id.aboutus_text);
+        aboutus_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AboutActivity.class);

@@ -46,7 +46,7 @@
             android:textColor="@color/White"
             android:textSize="21sp"
             android:textStyle="bold|italic"
-            app:fontFamily="@font/raleway" />
+            app:fontFamily="@font/gourmet" />
 
         <TextView
             android:id="@+id/about"
@@ -67,7 +67,7 @@
             android:textColor="@color/White"
             android:textSize="21sp"
             android:textStyle="bold|italic"
-            app:fontFamily="@font/raleway" />
+            app:fontFamily="@font/gourmet" />
 
         <TextView
             android:id="@+id/textView"
