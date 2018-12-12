@@ -65,7 +65,6 @@ public class WordModel implements Serializable {
 
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
-
     }
 
     public String getLink() {

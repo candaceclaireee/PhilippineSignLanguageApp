@@ -41,6 +41,9 @@ public class WordActivity extends AppCompatActivity {
     /* For the GIF Viewer */
     private ImageView word_image;
 
+    /* For the Firebase */
+    DatabaseReference mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,16 +79,44 @@ public class WordActivity extends AppCompatActivity {
                 if(model.getFavorite() == true){
                     model.setFavorite(false);
                     favorite.setText(getResources().getString(R.string.add_fave));
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("words");
+                    mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                                WordModel word = postSnapshot.getValue(WordModel.class);
+                                if(model.getWord().equals(word.getWord())){
+                                    DatabaseReference mDatabaseRef = postSnapshot.getRef().child("favorite");
+                                    mDatabaseRef.setValue(false);
+                                }
+                            }
+                        }   
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) { }
+                    });
                 }
                 else{
                     model.setFavorite(true);
                     favorite.setText(getResources().getString(R.string.remove_fave));
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("words");
+                    mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                                WordModel word = postSnapshot.getValue(WordModel.class);
+                                if(model.getWord().equals(word.getWord())){
+                                    DatabaseReference mDatabaseRef = postSnapshot.getRef().child("favorite");
+                                    mDatabaseRef.setValue(true);
+                                }
+                            }
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) { }
+                    });
                 }
             }
         });
     }
-
-
 
     public void initializeNavigationMenu(String word){
         drawerLayout = findViewById(R.id.activity_word);
