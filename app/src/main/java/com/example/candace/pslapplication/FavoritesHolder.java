@@ -18,8 +18,16 @@ public class FavoritesHolder extends RecyclerView.ViewHolder{
         super(view);
 
         favorites_text = view.findViewById(R.id.favorite_text);
-        btn = view.findViewById(R.id.btn);
+        favorites_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(fave.getApplicationContext(), WordActivity.class);
+                intent.putExtra("WordModelObject", model);
+                fave.startActivity(intent);
+            }
+        });
 
+        btn = view.findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

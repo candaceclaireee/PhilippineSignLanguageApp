@@ -23,6 +23,15 @@ public class ListHolder extends RecyclerView.ViewHolder{
         super(view);
 
         listcategories_text = view.findViewById(R.id.listcategories_text);
+        listcategories_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(activity.getApplicationContext(), WordActivity.class);
+                intent.putExtra("WordModelObject", model);
+                activity.startActivity(intent);
+            }
+        });
         listcategories_button = view.findViewById(R.id.listcategories_button);
         listcategories_button.setOnClickListener(new View.OnClickListener() {
             @Override

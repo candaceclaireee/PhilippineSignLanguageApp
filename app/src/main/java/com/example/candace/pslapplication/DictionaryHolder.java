@@ -18,6 +18,14 @@ public class DictionaryHolder extends RecyclerView.ViewHolder{
         super(view);
 
         dict_text = view.findViewById(R.id.dict_text);
+        dict_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(dict.getApplicationContext(), WordActivity.class);
+                intent.putExtra("WordModelObject", model);
+                dict.startActivity(intent);
+            }
+        });
         btn = view.findViewById(R.id.gotonext);
 
         btn.setOnClickListener(new View.OnClickListener() {
