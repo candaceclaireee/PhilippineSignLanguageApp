@@ -241,7 +241,7 @@ public class LevelActivity extends AppCompatActivity {
             public void run() {
                 dialog.dismiss();
             }
-        }, 1000);
+        }, 2000);
         dialog.show();
     }
     private void correctDialog(){
