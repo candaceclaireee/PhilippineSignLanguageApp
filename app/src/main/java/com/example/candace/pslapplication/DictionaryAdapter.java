@@ -70,7 +70,7 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryHolder> im
                     DataSnapshot dataSnapshotChild = dataSnapshots.next();
                     WordModel word = dataSnapshotChild.getValue(WordModel.class);
                     notifyDataSetChanged();
-                    fulllist.add(new WordModel(word.getWord(), word.getWordFilipino(),word.getCategory(),word.getFavorite(),word.getLink()));
+                    fulllist.add(word);
                     notifyDataSetChanged();
                 }
 
