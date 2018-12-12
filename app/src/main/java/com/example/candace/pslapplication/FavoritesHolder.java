@@ -43,6 +43,7 @@ public class FavoritesHolder extends RecyclerView.ViewHolder{
         favorites_text.setText(word.getWord());
         model = word;
     }
+    
     public void setActivity(FavoritesActivity activity){
         fave = activity;
     }
