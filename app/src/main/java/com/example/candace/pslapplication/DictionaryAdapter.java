@@ -30,11 +30,12 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryHolder> im
 
     public DictionaryAdapter(DictionaryActivity activity){
         allWords = new ArrayList<WordModel>();
-      //  allWords = sampleItems();
+        fulllist = new ArrayList<WordModel>();
 
+        initializeFirebaseData();
+        fulllist.clear();
         fulllist = new ArrayList<WordModel>(allWords);
         this.activity = activity;
-        initializeFirebaseData();
     }
 
     @Override
@@ -69,16 +70,17 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryHolder> im
                     DataSnapshot dataSnapshotChild = dataSnapshots.next();
                     WordModel word = dataSnapshotChild.getValue(WordModel.class);
                     notifyDataSetChanged();
-                    allWords.add(word);
+                    fulllist.add(new WordModel(word.getWord(), word.getWordFilipino(),word.getCategory(),word.getFavorite(),word.getLink()));
+                    notifyDataSetChanged();
                 }
 
-                Collections.sort(allWords, new Comparator<WordModel>() {
+                Collections.sort(fulllist, new Comparator<WordModel>() {
                     @Override
                     public int compare(WordModel o1, WordModel o2) {
                         return o1.getWord().compareTo(o2.getWord());
                     }
                 });
-                storageContainer(allWords);
+                storageContainer(fulllist);
             }
 
             @Override
@@ -88,7 +90,8 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryHolder> im
 
     /* For the Firebase Database */
     public void storageContainer(ArrayList<WordModel> words) {
-        this.allWords = words;
+
+        this.allWords.addAll(words);
     }
 
 
@@ -127,16 +130,4 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryHolder> im
             notifyDataSetChanged();
         }
     };
-
-    private ArrayList<WordModel> sampleItems(){
-        ArrayList<WordModel> sample = new ArrayList<WordModel>();
-
-        sample.add(new WordModel("one", "isa", "number", true, "sample"));
-        sample.add(new WordModel("two", "isa", "number", true, "sample"));
-        sample.add(new WordModel("three", "isa", "number", true, "sample"));
-        sample.add(new WordModel("four", "isa", "number", true, "sample"));
-        sample.add(new WordModel("five", "isa", "number", true, "sample"));
-
-        return sample;
-    }
 }

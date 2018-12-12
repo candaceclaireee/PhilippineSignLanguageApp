@@ -12,16 +12,29 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Dictionary;
+import java.util.Iterator;
 
 public class DictionaryActivity extends AppCompatActivity {
 
@@ -29,12 +42,16 @@ public class DictionaryActivity extends AppCompatActivity {
     protected DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawer;
     private NavigationView navView;
+  //  private EditText search;
 
     /* For the Recycler View */
     private RecyclerView recyclerArea;
     private RecyclerView.LayoutManager manager;
     private DictionaryAdapter adapter;
 
+
+    private DatabaseReference mDatabase;
+    private ArrayList<WordModel> allWords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +69,7 @@ public class DictionaryActivity extends AppCompatActivity {
         recyclerArea.setAdapter(adapter);
         recyclerArea.addItemDecoration(new DividerItemDecoration(recyclerArea.getContext(),
                 DividerItemDecoration.VERTICAL));
+
 
     }
 
@@ -75,8 +93,11 @@ public class DictionaryActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
         return true;
     }
+
 
     /* For Navigation Menu */
     public void initializeNavigationMenu(){
