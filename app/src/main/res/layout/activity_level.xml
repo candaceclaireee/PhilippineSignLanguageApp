@@ -129,6 +129,7 @@
                 android:layout_marginRight="8dp"
                 android:text="Lives:"
                 android:textColor="@color/White"
+                android:textColorLink="@color/Green"
                 android:textSize="24sp"
                 app:fontFamily="@font/gourmet"
                 app:layout_constraintEnd_toEndOf="parent"
