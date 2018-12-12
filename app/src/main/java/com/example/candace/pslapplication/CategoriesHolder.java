@@ -45,7 +45,8 @@ public class CategoriesHolder extends RecyclerView.ViewHolder{
     public void setCategoryText(String word){
         name = word;
         if (word.equals("Alphabets")) {
-            categories_text.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.Yellow));
+            
+			categories_text.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.Yellow));
             categories_button.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.Yellow));
         } else if (word.equals("Weekdays")) {
             categories_text.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.Red));

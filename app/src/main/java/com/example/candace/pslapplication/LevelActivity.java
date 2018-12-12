@@ -5,8 +5,11 @@ import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -16,15 +19,20 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -47,14 +55,12 @@ public class LevelActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawer;
     private NavigationView navView;
 
-
     /* For Alarm */
     private int jobID;
     private boolean stop = false;
     private static final int TIME = 1000;
     int a=0;
-    public static final String UI_UPDATE_TAG =
-            "fsl_app";
+    public static final String UI_UPDATE_TAG = "fsl_app";
     private BroadcastReceiver receiver = new ActivityReceiver();
 
     /* For level list*/
@@ -65,8 +71,6 @@ public class LevelActivity extends AppCompatActivity {
     private ImageView gifHolder;
     private Button submit;
     private EditText answer;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,32 +110,32 @@ public class LevelActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            ans = list.get(index).getWord();
-            filAns = list.get(index).getWordFilipino();
+                ans = list.get(index).getWord();
+                filAns = list.get(index).getWordFilipino();
 
-            if((lives>1 && lives<=10) && (answer.getText().toString().equalsIgnoreCase(ans) || answer.getText().toString().equalsIgnoreCase(filAns) ) ){
-                index = rand.nextInt(list.size());
-                points+=2;
-                correctDialog();
-                game();
-            }
-            else if((lives>1 && lives<=10) && (!(answer.getText().toString().equals(ans)) || !(answer.getText().toString().equalsIgnoreCase(filAns)))){
-                lives--;
-                index = rand.nextInt(list.size());
-                tryDialog();
-                game();
-            }
-            else if(lives==1) {
-                wrongDialog();
-                submit.setEnabled(false);
-                Intent intent = new Intent(activity.getApplicationContext(), QuizzesActivity.class);
-               // intent.putExtra("POINTS", String.valueOf(points));
-                LevelActivity.this.startActivity(intent);
+                if((lives>1 && lives<=10) && (answer.getText().toString().equalsIgnoreCase(ans) || answer.getText().toString().equalsIgnoreCase(filAns) ) ){
+                    index = rand.nextInt(list.size());
+                    points+=2;
+                    correctDialog();
+                    game();
+                }
+                else if((lives>1 && lives<=10) && (!(answer.getText().toString().equals(ans)) || !(answer.getText().toString().equalsIgnoreCase(filAns)))){
+                    lives--;
+                    index = rand.nextInt(list.size());
+                    tryDialog();
+                    game();
+                }
+                else if(lives==1) {
+                    wrongDialog();
+                    submit.setEnabled(false);
+                    Intent intent = new Intent(activity.getApplicationContext(), QuizzesActivity.class);
+                    // intent.putExtra("POINTS", String.valueOf(points));
+                    LevelActivity.this.startActivity(intent);
 
-            }
+                }
 
-            pts.setText("Points: "+points);
-            lvs.setText("Lives: "+lives);
+                pts.setText("Points: "+points);
+                lvs.setText("Lives: "+lives);
 
             }
         });
@@ -219,41 +223,81 @@ public class LevelActivity extends AppCompatActivity {
     }
 
     private void tryDialog(){
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("WRONG ANSWER, Try Again!");
-        final AlertDialog dialog = builder1.create();
-        new Handler().postDelayed(new Runnable() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog dialog = builder.create();
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.alert_dialog, null);
+        dialog.setView(dialogLayout);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-            public void run() {
-                dialog.dismiss();
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface d) {
+                ImageView image = (ImageView) dialog.findViewById(R.id.goProDialogImage);
+                Glide.with(LevelActivity.this).load(R.drawable.tryagain).into(image);
+                TextView alertText = (TextView) dialog.findViewById(R.id.alertText);
+                alertText.setText("WRONG ANSWER!");
+                float imageWidthInPX = (float)image.getWidth();
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        dialog.dismiss();
+                    }
+                }, 2500);
             }
-        }, 1000);
+        });
         dialog.show();
-
     }
 
     private void wrongDialog(){
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("YOU RAN OUT OF LIVES! ");
-        final AlertDialog dialog = builder1.create();
-        new Handler().postDelayed(new Runnable() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog dialog = builder.create();
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.alert_dialog, null);
+        dialog.setView(dialogLayout);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-            public void run() {
-                dialog.dismiss();
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface d) {
+                ImageView image = (ImageView) dialog.findViewById(R.id.goProDialogImage);
+                Glide.with(LevelActivity.this).load(R.drawable.ranoutoflives).into(image);
+                TextView alertText = (TextView) dialog.findViewById(R.id.alertText);
+                alertText.setText("YOU RAN OUT OF LIVES!");
+                float imageWidthInPX = (float) image.getWidth();
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        dialog.dismiss();
+                    }
+                }, 2000);
             }
-        }, 2000);
+        });
         dialog.show();
     }
-    private void correctDialog(){
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("CORRECT ANSWER");
-        final AlertDialog dialog = builder1.create();
-        new Handler().postDelayed(new Runnable() {
 
-            public void run() {
-                dialog.dismiss();
+
+    private void correctDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog dialog = builder.create();
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.alert_dialog, null);
+        dialog.setView(dialogLayout);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface d) {
+                ImageView image = (ImageView) dialog.findViewById(R.id.goProDialogImage);
+                Glide.with(LevelActivity.this).load(R.drawable.correct).into(image);
+                TextView alertText = (TextView) dialog.findViewById(R.id.alertText);
+                alertText.setText("CORRECT ANSWER");
+                float imageWidthInPX = (float)image.getWidth();
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        dialog.dismiss();
+                    }
+                }, 2500);
             }
-        }, 1000);
+        });
         dialog.show();
     }
 
