@@ -151,7 +151,7 @@ public class LevelActivity extends AppCompatActivity {
         Intent alarmIntent = new Intent(UI_UPDATE_TAG);
         alarmIntent.putExtra("ID", jobID);
         jobID++;
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this,1000000+jobID, alarmIntent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this,10000+jobID, alarmIntent, 0);
         AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         manager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + TIME, pendingIntent);
     }
@@ -165,7 +165,7 @@ public class LevelActivity extends AppCompatActivity {
         alarmIntent.putExtra("ID", jobID);
         jobID++;
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1000000+jobID, alarmIntent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 10000+jobID, alarmIntent, 0);
 
         AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         manager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + TIME, pendingIntent);
@@ -175,7 +175,6 @@ public class LevelActivity extends AppCompatActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.d("ALARM AND BROADCAST","ActivityReceiver onReceive");
             int id = intent.getExtras().getInt("ID");
             if(stop==false)
             {
@@ -196,34 +195,65 @@ public class LevelActivity extends AppCompatActivity {
     private void readyDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("READY");
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        final AlertDialog dialog1 = builder.create();
+        new Handler().postDelayed(new Runnable() {
+
+            public void run() {
+                dialog1.dismiss();
+            }
+        }, 2000);
+        dialog1.show();
     }
 
     private void startDialog(){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
         builder1.setMessage("START");
-        AlertDialog dialog = builder1.create();
+        final AlertDialog dialog = builder1.create();
+        new Handler().postDelayed(new Runnable() {
+
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 1000);
         dialog.show();
     }
 
     private void tryDialog(){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
         builder1.setMessage("WRONG ANSWER, Try Again!");
-        AlertDialog dialog = builder1.create();
+        final AlertDialog dialog = builder1.create();
+        new Handler().postDelayed(new Runnable() {
+
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 1000);
         dialog.show();
+
     }
 
     private void wrongDialog(){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("YOU RAN OUT OF LIVES!");
-        AlertDialog dialog = builder1.create();
+        builder1.setMessage("YOU RAN OUT OF LIVES! ");
+        final AlertDialog dialog = builder1.create();
+        new Handler().postDelayed(new Runnable() {
+
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 1000);
         dialog.show();
     }
     private void correctDialog(){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
         builder1.setMessage("CORRECT ANSWER");
-        AlertDialog dialog = builder1.create();
+        final AlertDialog dialog = builder1.create();
+        new Handler().postDelayed(new Runnable() {
+
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 1000);
         dialog.show();
     }
 
