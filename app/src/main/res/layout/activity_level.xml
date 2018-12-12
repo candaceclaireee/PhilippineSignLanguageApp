@@ -5,12 +5,12 @@
     android:id="@+id/activity_level"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:visibility="visible"
     tools:context=".LevelActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:background="@drawable/aboutbg"
         tools:context=".WordActivity">
 
         <ImageView
@@ -60,7 +60,7 @@
             android:ems="10"
             android:inputType="text"
             android:textColor="@color/White"
-            android:textSize="24sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
