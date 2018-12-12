@@ -397,25 +397,25 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="301dp"
-            android:layout_height="44dp"
+            android:layout_width="wrap_content"
+            android:layout_height="69dp"
             android:layout_alignEnd="@+id/imageView2"
             android:layout_alignRight="@+id/imageView2"
             android:layout_alignBottom="@+id/imageView2"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="42dp"
-            android:layout_marginLeft="42dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
             android:layout_marginTop="113dp"
-            android:layout_marginEnd="41dp"
-            android:layout_marginRight="41dp"
-            android:layout_marginBottom="117dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="118dp"
             android:gravity="center"
             android:text="Filipino Sign Language "
             android:textColor="@color/White"
-            android:textSize="24sp"
-            app:fontFamily="@font/raleway" />
+            android:textSize="40sp"
+            app:fontFamily="@font/gourmet" />
 
         <TextView
             android:id="@+id/textView3"
@@ -436,8 +436,9 @@
             android:gravity="center_vertical|center"
             android:text="Application"
             android:textColor="@color/Blue"
-            android:textSize="24sp"
-            android:textStyle="bold|italic" />
+            android:textSize="30sp"
+            android:textStyle="bold|italic"
+            app:fontFamily="@font/champagneandlimo" />
 
     </RelativeLayout>
 

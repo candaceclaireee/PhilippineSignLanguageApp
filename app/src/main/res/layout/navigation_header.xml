@@ -10,9 +10,18 @@
         <ImageView
             android:layout_width="103dp"
             android:layout_height="97dp"
-            android:layout_marginBottom="1dp"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="1dp"
             android:background="@drawable/navigation_icon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="FILIPINO SIGN LANGUAGE"
+            android:textColor="@color/White"
+            android:textSize="30sp"
+            app:fontFamily="@font/gourmet" />
 
         <TextView
             android:layout_width="match_parent"
@@ -20,7 +29,10 @@
             android:layout_marginTop="1dp"
             android:layout_marginBottom="15dp"
             android:gravity="center"
-            android:text="Filipino Sign Language"
-            android:textColor="@color/White"
-            app:fontFamily="@font/raleway" />
+            android:text="Application"
+            android:textColor="@color/Blue"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            app:fontFamily="@font/champagneandlimo" />
+
 </LinearLayout>

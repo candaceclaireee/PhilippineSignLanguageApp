@@ -37,8 +37,8 @@
             android:gravity="center"
             android:text=" category_title"
             android:textColor="@color/White"
-            android:textSize="30sp"
-            app:fontFamily="@font/raleway" />
+            android:textSize="40sp"
+            app:fontFamily="@font/jullian" />
     </FrameLayout>
 
 </LinearLayout>

@@ -48,15 +48,17 @@ public class QuizHolder extends RecyclerView.ViewHolder {
         if (level.equals("1")) {
             leveltext.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.Yellow));
             img.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.Yellow));
+            leveltext.setText("EASY");
         } else if (level.equals("2")) {
             leveltext.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.Red));
             img.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.Red));
+            leveltext.setText("INTERMEDIATE");
         } else if (level.equals("3")) {
             leveltext.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.Blue));
             img.setTextColor(ContextCompat.getColor(activity.getApplicationContext(), R.color.Blue));
+            leveltext.setText("HARD");
         }
 
-        leveltext.setText("LEVEL" + lvl);
     }
     public void setImgBtn(int newImg){
 //        img.setBackgroundResource(newImg);
