@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class CategoriesHolder extends RecyclerView.ViewHolder{
 
@@ -56,6 +58,13 @@ public class CategoriesHolder extends RecyclerView.ViewHolder{
     }
 
     public void setWords(ArrayList<WordModel> words){
+        Collections.sort(words, new Comparator<WordModel>() {
+            @Override
+            public int compare(WordModel o1, WordModel o2) {
+                return o1.getWord().compareTo(o2.getWord());
+            }
+        });
+
         list = words;
     }
 }

@@ -14,6 +14,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 
 public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryHolder> implements Filterable {
@@ -69,6 +71,13 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryHolder> im
                     notifyDataSetChanged();
                     allWords.add(word);
                 }
+
+                Collections.sort(allWords, new Comparator<WordModel>() {
+                    @Override
+                    public int compare(WordModel o1, WordModel o2) {
+                        return o1.getWord().compareTo(o2.getWord());
+                    }
+                });
                 storageContainer(allWords);
             }
 
